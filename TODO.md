@@ -8,3 +8,12 @@
  * Absolute
  * Percentage based
  * Chebyschev polynomials
+ 
+ 
+* Rat Fit
+  * error bounds
+  * normalize data for poly
+  * data - lower bounds
+  * data + upper bounds
+  
+ 

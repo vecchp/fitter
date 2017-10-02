@@ -1,5 +1,3 @@
-import pandas as pd
-
 from numpy.polynomial.chebyshev import chebval
 import numpy as np
 
@@ -24,8 +22,3 @@ if __name__ == '__main__':
     main()
 
 
-# error bounds
-# normalize data
-
-# data - lower bounds
-# data + upper bounds
