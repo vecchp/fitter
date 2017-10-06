@@ -4,8 +4,9 @@ import pandas as pd
 from sklearn import preprocessing
 
 
-def scale(data, feature_range=(-1, 1), full=True):
-    bounds = data if full else np.reshape(data, (-1, 1))
+# TODO: Document me
+def scale(data, feature_range=(-1, 1), columnar=False):
+    bounds = data if columnar else np.reshape(data, (-1, 1))
     scale_func = preprocessing.MinMaxScaler(feature_range=feature_range).fit(bounds)
     return scale_func.transform(data), scale_func
 
@@ -25,7 +26,7 @@ def main():
     vals, unscale = scale(absolute_error(data[:, -1]))
     print(vals)
 
-    inputs, unscale = scale(data[:, 0:-1], full=False)
+    inputs, unscale = scale(data[:, 0:-1], columnar=True)
     print(inputs)
     # print(generate_cheb([1, 2, 3, 4], 4))
 
