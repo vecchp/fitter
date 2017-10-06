@@ -4,9 +4,9 @@ import pandas as pd
 from sklearn import preprocessing
 
 
-def scale(data, full=True):
+def scale(data, feature_range=(-1, 1), full=True):
     bounds = data if full else np.reshape(data, (-1, 1))
-    scale_func = preprocessing.MinMaxScaler(feature_range=(-1, 1)).fit(bounds)
+    scale_func = preprocessing.MinMaxScaler(feature_range=feature_range).fit(bounds)
     return scale_func.transform(data), scale_func
 
 
