@@ -4,10 +4,10 @@ import pandas as pd
 from sklearn import preprocessing
 
 
-def normalize_data(lower, upper):
-    data = np.concatenate((lower, upper), axis=0).reshape(-1, 1)
-    scale = preprocessing.MinMaxScaler(feature_range=(-1, 1)).fit(data)
-    print(scale.transform(data))
+def scale(data, full=True):
+    bounds = data if full else np.reshape(data, (-1, 1))
+    scale_func = preprocessing.MinMaxScaler(feature_range=(-1, 1)).fit(bounds)
+    return scale_func.transform(data), scale_func
 
 
 def generate_cheb(x, num_coeffs):
@@ -15,17 +15,18 @@ def generate_cheb(x, num_coeffs):
 
 
 def absolute_error(data, error=.01):
-    return data - error, data + error
+    return np.c_[data, data - error, data + error]
 
 
 def main():
     filename = 'Kirby2.dat'
     data = pd.read_csv(filename, delim_whitespace=True).as_matrix()
 
-    lower, upper = absolute_error(data[:, -1])
+    vals, unscale = scale(absolute_error(data[:, -1]))
+    print(vals)
 
-    normalize_data(lower, upper)
-
+    inputs, unscale = scale(data[:, 0:-1], full=False)
+    print(inputs)
     # print(generate_cheb([1, 2, 3, 4], 4))
 
 
