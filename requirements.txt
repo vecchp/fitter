@@ -1,0 +1,7 @@
+wheels/cvxopt-1.1.9-cp36-cp36m-win_amd64.whl; sys_platform == "win32"
+wheels/numpy-1.13.3+mkl-cp36-cp36m-win_amd64.whl; sys_platform == "win32"
+wheels/pandas-0.20.3-cp36-cp36m-win_amd64.whl; sys_platform == "win32"
+wheels/scipy-1.0.0rc1-cp36-cp36m-win_amd64.whl; sys_platform == "win32"
+
+cvxopt; sys_platform != "win32"
+numpy; sys_platform != "win32"
